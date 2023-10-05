@@ -15,7 +15,28 @@ If the argument is null, return "Illegal argument".
 If a value of the argument is not 1 or 2, return "Illegal argument".
 */
 // TODO add your code here
-
+function getScore(arr) {
+  if (arr == null) {
+    return "Illegal argument";
+  } else if (arr.length === 0) {
+    return "0-0 : draw";
+  } else {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] !== 1 && arr[i] !== 2) {
+        return "Illegal argument";
+      }
+    }
+    const team1 = arr.filter((x) => x === 1).length;
+    const team2 = arr.filter((x) => x === 2).length;
+    if (team1 === team2) {
+      return `${team1}-${team2} : draw`;
+    } else if (team1 > team2) {
+      return `${team1}-${team2} : team 1 wins the game`;
+    } else {
+      return `${team1}-${team2} : team 2 wins the game`;
+    }
+  }
+}
 // Begin of tests
 const assert = require("assert");
 assert.strictEqual(typeof getScore, "function");
@@ -28,3 +49,4 @@ assert.strictEqual(getScore([1, 1, 2, 2]), "2-2 : draw");
 assert.strictEqual(getScore([1, 2, 1, 3, 1, 2]), "Illegal argument");
 assert.strictEqual(getScore(["1", "2"]), "Illegal argument");
 // End of tests
+console.log("Bravo!");
