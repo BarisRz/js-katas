@@ -13,7 +13,15 @@ You can't use Math.min(), the goal is to recreate this function!
 */
 
 // TODO add your code here
-
+function min(n1, n2) {
+  if (isNaN(n1) || isNaN(n2)) {
+    return NaN;
+  } else if (n1 < n2) {
+    return n1;
+  } else {
+    return n2;
+  }
+}
 // Begin of tests
 const assert = require("assert");
 
@@ -26,4 +34,4 @@ assert.strictEqual(min("tacos", 0), NaN);
 assert.strictEqual(min(), NaN);
 // End of tests
 
-console.log("🎉");
+console.log("Bravo!");

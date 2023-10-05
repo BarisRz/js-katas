@@ -17,7 +17,13 @@ You can't use Math.pow(), the goal is to recreate this function!
 */
 
 // TODO add your code here
-
+function pow(base, exponent) {
+  if (isNaN(base) || isNaN(exponent)) {
+    return NaN;
+  } else {
+    return base ** exponent;
+  }
+}
 // Begin of tests
 const assert = require("assert");
 
@@ -31,4 +37,4 @@ assert.strictEqual(pow("tacos", 2), NaN);
 assert.strictEqual(pow(42), NaN);
 // End of tests
 
-console.log("🎉");
+console.log("Bravo!");

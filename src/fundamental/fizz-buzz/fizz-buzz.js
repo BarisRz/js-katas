@@ -8,7 +8,17 @@ Create a function `fizzBuzz` which takes a number as parameter, and returns:
 */
 
 // TODO add your code here
-
+function fizzBuzz(number) {
+  if (number % 3 === 0 && number % 5 === 0) {
+    return "FizzBuzz";
+  } else if (number % 3 === 0) {
+    return "Fizz";
+  } else if (number % 5 === 0) {
+    return "Buzz";
+  } else {
+    return `${number}`;
+  }
+}
 // Begin of tests
 const assert = require("assert");
 
@@ -24,4 +34,4 @@ assert.strictEqual(fizzBuzz(7), "7");
 assert.strictEqual(fizzBuzz(13), "13");
 // End of tests
 
-console.log("🎉");
+console.log("Bravo!");
