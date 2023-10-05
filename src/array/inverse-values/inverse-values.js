@@ -13,7 +13,17 @@ Example:
 Don't mutate the parameter.
 
 */
-
+function inverse(arr) {
+  if (arr == null || arr.length === 0) {
+    return [];
+  } else {
+    const copyArr = Array.from(arr);
+    for (let i = 0; i < copyArr.length; i++) {
+      copyArr[i] = -copyArr[i];
+    }
+    return copyArr;
+  }
+}
 // TODO add your code here
 
 module.exports = inverse;
