@@ -18,7 +18,24 @@ If `n` is null or not a number, throw a TypeError.
 */
 
 // TODO add your code here
-
+function build(n) {
+  if (n === null || isNaN(n)) {
+    throw TypeError("Vous n'utilisez pas le bon type en argument");
+  }
+  if (!(n > 0)) {
+    throw RangeError("L'argument doit être forcément supérieur à 0");
+  }
+  let ligne = "*";
+  let espace = " ";
+  let pyramid = [];
+  for (let i = 1; i <= n; i++) {
+    let lignefinal = `${espace.repeat(n - i)}${ligne.repeat(
+      1 + 2 * (i - 1)
+    )}${espace.repeat(n - i)}`;
+    pyramid.push(lignefinal);
+  }
+  return pyramid;
+}
 // Begin of tests
 const assert = require("assert");
 
@@ -46,3 +63,4 @@ assert.throws(() => {
   build("a");
 }, TypeError);
 // End of tests
+console.log("Bravo!");
