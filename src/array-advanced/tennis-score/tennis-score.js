@@ -30,13 +30,13 @@ Add you own tests.
 
 // TODO add your code here
 function getScore(array) {
-  if (array === null || array.isArray) {
+  if (array === null || !Array.isArray(array)) {
     throw TypeError("L'argument n'a pas le bon type");
   }
-  if (array.every((element) => element === null || isNaN(element))) {
+  if (array.some((element) => element === null || isNaN(element))) {
     throw TypeError("Les éléments ne sont pas tous des entiers");
   }
-  if (!array.every((element) => element === 1 || element === 2)) {
+  if (array.filter((x) => x !== 1 && x !== 2).length) {
     throw RangeError("Il faut absolument un tableau avec des 1 ou 2");
   }
   let p1, p2;
@@ -101,15 +101,9 @@ assert.deepStrictEqual(getScore([2, 1, 2, 2]), "15-40");
 assert.deepStrictEqual(getScore([1, 2, 1, 2, 1, 2]), "deuce");
 assert.deepStrictEqual(getScore([1, 1, 1, 2, 2, 2, 1]), "ad in");
 assert.deepStrictEqual(getScore([1, 1, 1, 2, 2, 2, 2]), "ad out");
-assert.throws(() => {
-  getScore([1, 2, 3, 1, 2, 1]);
-}, RangeError);
-assert.throws(() => {
-  getScore([1, null, 3, 1, 2, 1]);
-}, TypeError);
-assert.throws(() => {
-  getScore(null);
-}, TypeError);
+assert.throws(() => {getScore(null)}, TypeError);
+assert.throws(() => {getScore([1, null, 2, 1])}, TypeError);
+assert.throws(() => {getScore([1, 2, 3, 1, 2, 1])}, RangeError);
 // End of tests
 
 console.log("Bravo!");
