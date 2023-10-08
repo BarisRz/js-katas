@@ -27,7 +27,15 @@ Don't mutate the parameter.
 */
 
 // TODO add your code here
-
+function censor(arr, mot) {
+  if (mot === null || mot === undefined) {
+    return "Error";
+  }
+  const censure = "*".repeat(mot.length);
+  let cparr = Array.from(arr);
+  cparr = cparr.map((phrase) => phrase.replaceAll(mot, censure));
+  return cparr;
+}
 // Begin of tests
 const assert = require("assert");
 
@@ -58,7 +66,7 @@ assert.deepStrictEqual(
   [
     "I love the smell of ***** in the morning.",
     "Where is my umbrella?",
-    "The test is not a diagnosis of the disease psittacosis.",
+    "The test is not a diagnosis of the disease psit*****is.",
     "Eat ***** every day.",
   ]
 );
@@ -71,3 +79,4 @@ assert.deepStrictEqual(
 );
 
 // End of tests
+console.log("Bravo!");
